@@ -1,0 +1,10 @@
+torch>=2.1
+transformers>=4.40
+accelerate>=0.30
+datasets>=2.19
+scikit-learn>=1.3
+pandas>=2.0
+numpy
+matplotlib
+tqdm
+sentencepiece
