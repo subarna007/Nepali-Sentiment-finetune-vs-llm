@@ -1,0 +1,51 @@
+{
+  "key": "llm_qwen2_5_3b_instruct_2shot",
+  "method": "Qwen2.5-3B-Instruct (2-shot per class, no training)",
+  "n_test": 3346,
+  "accuracy": 0.6371787208607292,
+  "macro_f1": 0.53909791660489,
+  "weighted_f1": 0.619785344093836,
+  "per_class": {
+    "negative": {
+      "precision": 0.6075533661740559,
+      "recall": 0.8161764705882353,
+      "f1": 0.6965798556636336,
+      "support": 1360
+    },
+    "neutral": {
+      "precision": 0.3807531380753138,
+      "recall": 0.1868583162217659,
+      "f1": 0.25068870523415976,
+      "support": 487
+    },
+    "positive": {
+      "precision": 0.72734375,
+      "recall": 0.6210807204803203,
+      "f1": 0.6700251889168766,
+      "support": 1499
+    }
+  },
+  "confusion_matrix": [
+    [
+      1110,
+      59,
+      191
+    ],
+    [
+      238,
+      91,
+      158
+    ],
+    [
+      479,
+      89,
+      931
+    ]
+  ],
+  "shots_per_class": 2,
+  "unparsed_outputs": 0,
+  "unparsed_rate": 0.0,
+  "trained_on": 6,
+  "inference_minutes": 19.6,
+  "system_prompt": "You are a sentiment classifier for tweets written in Nepali. Classify the sentiment of the tweet as exactly one of: positive, negative, neutral. Reply with only that one English word."
+}

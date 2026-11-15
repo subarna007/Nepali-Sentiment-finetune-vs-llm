@@ -1,0 +1,48 @@
+{
+  "key": "tfidf_logreg",
+  "method": "TF-IDF (char 1-4 grams) + Logistic Regression",
+  "n_test": 3346,
+  "accuracy": 0.702928870292887,
+  "macro_f1": 0.6567906499996915,
+  "weighted_f1": 0.7111421526958568,
+  "per_class": {
+    "negative": {
+      "precision": 0.7825396825396825,
+      "recall": 0.725,
+      "f1": 0.7526717557251908,
+      "support": 1360
+    },
+    "neutral": {
+      "precision": 0.3988183161004431,
+      "recall": 0.5544147843942505,
+      "f1": 0.4639175257731959,
+      "support": 487
+    },
+    "positive": {
+      "precision": 0.7778566359119943,
+      "recall": 0.7311541027351568,
+      "f1": 0.7537826685006878,
+      "support": 1499
+    }
+  },
+  "confusion_matrix": [
+    [
+      986,
+      185,
+      189
+    ],
+    [
+      93,
+      270,
+      124
+    ],
+    [
+      181,
+      222,
+      1096
+    ]
+  ],
+  "val_macro_f1": 0.665407947466668,
+  "C": 3.0,
+  "trained_on": 26764
+}

@@ -1,0 +1,80 @@
+{
+  "key": "finetuned_xlm_roberta_base",
+  "method": "Fine-tuned xlm-roberta-base",
+  "n_test": 3346,
+  "accuracy": 0.7764494919306635,
+  "macro_f1": 0.7074421298403962,
+  "weighted_f1": 0.7698051287529265,
+  "per_class": {
+    "negative": {
+      "precision": 0.8076923076923077,
+      "recall": 0.8338235294117647,
+      "f1": 0.8205499276410999,
+      "support": 1360
+    },
+    "neutral": {
+      "precision": 0.5779036827195467,
+      "recall": 0.4188911704312115,
+      "f1": 0.4857142857142857,
+      "support": 487
+    },
+    "positive": {
+      "precision": 0.7929515418502202,
+      "recall": 0.8405603735823882,
+      "f1": 0.8160621761658031,
+      "support": 1499
+    }
+  },
+  "confusion_matrix": [
+    [
+      1134,
+      64,
+      162
+    ],
+    [
+      116,
+      204,
+      167
+    ],
+    [
+      154,
+      85,
+      1260
+    ]
+  ],
+  "val_macro_f1": 0.6876541451468677,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.7584527302369144,
+      "val_macro_f1": 0.6305730650057034
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.6003453073044063,
+      "val_macro_f1": 0.6793484463419822
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.5196966466178917,
+      "val_macro_f1": 0.6776710518646033
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.45869555734203743,
+      "val_macro_f1": 0.6876541451468677
+    }
+  ],
+  "trained_on": 26764,
+  "train_minutes": 13.2,
+  "hyperparameters": {
+    "epochs": 4,
+    "batch_size": 32,
+    "lr": 2e-05,
+    "max_len": 128,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.06,
+    "class_weights": false,
+    "seed": 42
+  }
+}
