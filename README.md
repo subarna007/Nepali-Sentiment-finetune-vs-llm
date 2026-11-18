@@ -2,6 +2,8 @@
 
 Is it still worth fine-tuning a small multilingual model for a low-resource language, or can a general-purpose large language model do the job with no training at all?
 
+**Paper:** [Is fine-tuning still worth it for a low-resource language? (PDF)](paper/Dahal_2026_nepali_sentiment_finetune_vs_llm.pdf), also on [my website](https://subarna007.github.io/personalwebsite/#nepali).
+
 This project answers that question for **Nepali**, on a public benchmark of 33.5k COVID-19 tweets labelled positive, neutral or negative. Three approaches are evaluated on exactly the same held-out test set:
 
 | Approach | Model | Labelled data it uses |
@@ -22,6 +24,25 @@ This project answers that question for **Nepali**, on a public benchmark of 33.5
 <!-- RESULTS:END -->
 
 Macro-F1 is the main metric because the classes are not balanced. Results are from a single run (seed 42) on a Kaggle T4 GPU.
+
+### Uncertainty and significance
+
+95% intervals from 2,000 bootstrap resamples of the test set; McNemar's test on the tweets each method gets right.
+
+| Method | Macro-F1 (95% CI) |
+|---|---|
+| TF-IDF + logistic regression | 0.657 (0.640-0.675) |
+| Qwen2.5-3B, zero-shot | 0.480 (0.462-0.498) |
+| Qwen2.5-3B, 2 per class | 0.539 (0.520-0.557) |
+| Fine-tuned XLM-RoBERTa | 0.707 (0.688-0.725) |
+
+| Comparison | Difference in macro-F1 (95% CI) | McNemar p |
+|---|---|---|
+| XLM-R vs TF-IDF | 0.051 (0.030-0.072) | 4e-19 |
+| TF-IDF vs LLM 2-shot | 0.118 (0.096-0.141) | 9e-12 |
+| LLM 2-shot vs LLM zero-shot | 0.059 (0.040-0.078) | 2e-21 |
+
+All methods get worse on longer tweets: the fine-tuned model goes from 0.79 macro-F1 on tweets of up to 10 words to 0.60 on tweets over 40 words.
 
 ### Findings
 
@@ -97,9 +118,18 @@ src/train_transformer.py  XLM-RoBERTa fine-tuning
 src/zero_shot_llm.py      zero-shot / few-shot LLM evaluation
 src/make_report.py        results table for README and results/results.md
 src/make_figures.py       summary figures
+paper/                    the write-up (LaTeX source and PDF)
 notebooks/                notebook version of the full run
 results/                  metrics (JSON), confusion matrices, predictions
 ```
+
+## What could be explored next
+
+- Larger open LLMs (7B-70B) and Nepali-specific encoders such as NepBERTa.
+- Instructions written in Nepali instead of English, and more or better-chosen examples.
+- LoRA fine-tuning of the same 3B LLM, to separate model size from training.
+- Learning curves (100, 500, 2,000 labels) to find where fine-tuning overtakes the LLM.
+- Re-annotating neutral tweets with several people to measure label agreement.
 
 ## Limitations
 
